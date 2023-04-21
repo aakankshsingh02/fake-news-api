@@ -23,7 +23,7 @@ def fake_news_det(news):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('predict.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -31,9 +31,9 @@ def predict():
         message = request.form['message']
         pred = fake_news_det(message)
         print(pred)
-        return render_template('index.html', prediction=pred)
+        return render_template('predict.html', prediction=pred)
     else:
-        return render_template('index.html', prediction="Something went wrong")
+        return render_template('predict.html', prediction="Something went wrong")
 
 if __name__ == '__main__':
     app.run(debug=True)
